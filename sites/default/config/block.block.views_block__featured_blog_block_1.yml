@@ -1,0 +1,24 @@
+uuid: 86c5a487-6bbb-42bc-ba92-9d6c985c7f3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.featured_blog
+  module:
+    - views
+  theme:
+    - bartik
+id: views_block__featured_blog_block_1
+theme: bartik
+region: sidebar_second
+weight: -10
+provider: null
+plugin: 'views_block:featured_blog-block_1'
+settings:
+  id: 'views_block:featured_blog-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility: {  }

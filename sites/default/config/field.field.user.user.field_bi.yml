@@ -1,0 +1,20 @@
+uuid: 114ef220-e5a8-409c-9b47-bcd682043011
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_bi
+  module:
+    - user
+id: user.user.field_bi
+field_name: field_bi
+entity_type: user
+bundle: user
+label: Biography
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

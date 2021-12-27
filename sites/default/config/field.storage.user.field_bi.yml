@@ -1,0 +1,19 @@
+uuid: 4e4fac8e-87a4-4f0a-b639-91ead96cff55
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_bi
+field_name: field_bi
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

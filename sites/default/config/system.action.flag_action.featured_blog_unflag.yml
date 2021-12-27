@@ -1,0 +1,15 @@
+uuid: 8891a253-a8cf-4c28-8050-5aac59d0bff1
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.featured_blog
+  module:
+    - flag
+id: flag_action.featured_blog_unflag
+label: 'Unflag this item'
+type: node
+plugin: 'flag_action:featured_blog_unflag'
+configuration:
+  flag_id: featured_blog
+  flag_action: unflag

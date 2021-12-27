@@ -1,0 +1,15 @@
+uuid: 0084bb31-094b-4d6c-85a0-2f0fbc721b68
+langcode: en
+status: true
+dependencies: {  }
+name: custome_930x360_
+label: 'custom (930X360)'
+effects:
+  0e348a30-2e5b-4477-82dc-113460c56f32:
+    uuid: 0e348a30-2e5b-4477-82dc-113460c56f32
+    id: image_scale
+    weight: 1
+    data:
+      width: 930
+      height: 360
+      upscale: true

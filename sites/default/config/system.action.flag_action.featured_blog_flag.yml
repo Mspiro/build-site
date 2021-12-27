@@ -1,0 +1,15 @@
+uuid: 62ba0b9d-1b3c-4870-88dd-f1e799e40319
+langcode: en
+status: true
+dependencies:
+  config:
+    - flag.flag.featured_blog
+  module:
+    - flag
+id: flag_action.featured_blog_flag
+label: Featured
+type: node
+plugin: 'flag_action:featured_blog_flag'
+configuration:
+  flag_id: featured_blog
+  flag_action: flag

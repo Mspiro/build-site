@@ -1,0 +1,13 @@
+uuid: abd3b1e9-602a-4de3-8da2-7d4d09dd672b
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - weather
+_core:
+  default_config_hash: AK8Cs8S49Rtk7jbJGf3o9itL4i8Jnj_WPP93wT6xwgQ
+id: weather_short
+label: 'Weather short date'
+locked: false
+pattern: 'F j, Y'
