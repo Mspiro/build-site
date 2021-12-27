@@ -1,0 +1,44 @@
+<div class="weather">
+  {% for place in weather %}
+    <p style="clear:left"><strong>{{ place.link }}</strong></p>
+    {% if place.forecasts is empty%}
+      {{'Currently, there is no weather information available.'|t }}
+    {% endif %}
+    {% for forecast in place.forecasts %}
+      {% for time_range, data in forecast.time_ranges %}
+        <p style="clear:left">
+          {{ forecast.formatted_date }}<br />
+          {% if forecast.sun_info %}
+            {% if forecast.sun_info is iterable %}
+              {{ "Sunrise: @time"|t({'@time':  forecast.sun_info.sunrise}) }}<br />
+              {{ "Sunset: @time"|t({'@time':  forecast.sun_info.sunset}) }}<br />
+            {% else %}
+              {{forecast.sun_info }}<br />
+            {% endif %}
+          {% endif %}
+          {{ time_range }}
+        </p>
+        <div style="float:left;margin-right:1em;margin-bottom:1em">
+          {{ data.symbol }}
+        </div>
+        <p style="font-size:125%">
+          {{ data.condition }}<br />
+          {{ data.temperature }}
+          {% if data.windchill %}
+            <br />
+            {{ "Feels like !temperature"|t({'!temperature':  data.windchill}) }}
+          {% endif %}
+        </p>
+      {% endfor %}
+    {% endfor %}
+    {% if place.station %}
+      <p style="clear:left">
+        {{ 'Location of this weather station:'|t }}<br />
+        {{ place.station }}
+      </p>
+    {% endif %}
+    <p style="clear:left">
+      {{ '<a href="@url">Weather forecast from yr.no</a>, delivered by the Norwegian Meteorological Institute and the NRK'|t({'@url':  place["yr.no"]}) }}
+    </p>
+  {% endfor %}
+</div>

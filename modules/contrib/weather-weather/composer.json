@@ -1,0 +1,36 @@
+{
+  "name": "drupal/weather",
+  "description": "Displays current weather and forecasts",
+  "minimum-stability": "dev",
+  "license": "GPL-2.0-or-later",
+  "type": "drupal-module",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
+  "homepage": "https://drupal.org/project/weather",
+  "authors": [
+    {
+      "name": "Dr. Tobias Quathamer (toddy)",
+      "homepage": "https://www.drupal.org/u/toddy",
+      "role": "Author"
+    },
+    {
+      "name": "Taras Kyryliuk (tarasich)",
+      "homepage": "https://www.drupal.org/u/tarasich",
+      "role": "Author"
+    },
+    {
+      "name": "Yaroslav Samoilenko (ysamoylenko)",
+      "homepage": "https://www.drupal.org/u/ysamoylenko",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://drupal.org/project/issues/weather",
+    "irc": "irc://irc.freenode.org/drupal-contribute",
+    "source": "https://cgit.drupalcode.org/weather"
+  }
+}

@@ -1,0 +1,14 @@
+name: Weather
+type: module
+description: Displays current weather and forecasts
+configure: weather.settings
+package: Other
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - block:block
+
+# Information added by Drupal.org packaging script on 2021-10-08
+version: '2.0.1'
+project: 'weather'
+datestamp: 1633683833

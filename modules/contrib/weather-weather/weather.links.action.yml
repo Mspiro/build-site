@@ -1,0 +1,12 @@
+
+weather.weather_display.add:
+  route_name: entity.weather_display.add
+  title: 'Add display'
+  appears_on:
+    - weather.settings
+
+weather.weather_display.default:
+  route_name: entity.weather_display.default
+  title: 'Edit default display'
+  appears_on:
+    - weather.settings

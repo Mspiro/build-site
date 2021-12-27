@@ -1,0 +1,7 @@
+administer custom weather block:
+  title: 'Administer custom weather block'
+  description: 'Allows users to configure their custom weather block'
+
+administer system-wide weather:
+  title: 'Administer system-wide weather block'
+  description: 'Allows users to configure system-wide weather blocks'

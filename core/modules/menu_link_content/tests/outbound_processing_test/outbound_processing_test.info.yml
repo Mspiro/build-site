@@ -1,0 +1,8 @@
+name: 'Outbound route/path processing'
+type: module
+hidden: true
+
+# Information added by Drupal.org packaging script on 2021-11-17
+version: '9.2.9'
+project: 'drupal'
+datestamp: 1637185016

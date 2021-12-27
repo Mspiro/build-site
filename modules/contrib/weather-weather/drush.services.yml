@@ -1,0 +1,5 @@
+services:
+  weather.commands:
+    class: \Drupal\weather\Commands\WeatherCommands
+    tags:
+      - { name: drush.command }

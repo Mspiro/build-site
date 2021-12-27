@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the weather module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_install().
+ */
+function weather_install() {
+  \Drupal::messenger()->addMessage(
+    t(
+      'You should now import weather places to use within the module. To start the import, visit the <a href="@url">module configuration page</a>.',
+      ['@url' => Url::fromRoute('weather.settings')->toString()]
+    )
+  );
+}

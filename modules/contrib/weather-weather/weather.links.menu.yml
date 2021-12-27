@@ -1,0 +1,6 @@
+weather.settings:
+  title: Weather
+  description: 'Configure system-wide weather displays and the default configuration of new displays. Add new places to the module.'
+  parent: system.admin_config_ui
+  route_name: weather.settings
+  weight: 10

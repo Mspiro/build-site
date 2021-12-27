@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Main module file with hooks implementations.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+use Drupal\weather\Entity\WeatherDisplayInterface;
+
+/**
+ * Implements hook_help().
+ */
+function weather_help($route_name, RouteMatchInterface $route_match) {
+  $output = '';
+  switch ($route_name) {
+    case 'help.page.weather':
+      $path = __DIR__ . '/README.txt';
+      if (file_exists($path)) {
+        $output = '<pre>' . file_get_contents($path) . '</pre>';
+      }
+      break;
+
+    case 'weather.settings':
+      $output .= '<p>';
+      $output .= t('You can add, edit, and delete locations from system-wide weather displays. Moreover, you can specify default values for newly created displays. If you want to change the format of the displayed date, you can do that in the <a href="@url">date configuration</a>.',
+        ['@url' => Url::fromRoute('entity.date_format.collection')->toString()]);
+      $output .= '</p>';
+      break;
+
+    case 'weather.user.settings':
+      $output .= '<p>';
+      $output .= t('You can add, edit, and delete locations from your custom weather display.');
+      $output .= "\n";
+      $output .= t('Please note that the display will not be shown until you configure at least one location.');
+      $output .= '</p>';
+      break;
+  }
+
+  return $output;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function weather_theme() {
+  return [
+    // Compact forecast template (default for blocks)
+    'weather' => [
+      'template' => 'weather',
+      'variables' => [
+        'display_type' => NULL,
+        'display_number' => NULL,
+        'destination' => NULL,
+      ],
+    ],
+    // Detailed forecast template.
+    'weather_detailed_forecast' => [
+      'template' => 'weather_detailed_forecast',
+      'variables' => [
+        'weather_display_place' => NULL,
+        'display_type' => NULL,
+        'display_number' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_weather(&$variables) {
+  \Drupal::service('weather.theme')->preprocessWeatherVariables($variables);
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_weather_detailed_forecast(&$variables) {
+  \Drupal::service('weather.theme')->preprocessWeatherVariables($variables, TRUE);
+}
+
+/**
+ * Removes related entities on Weather Display delete.
+ *
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function weather_weather_display_delete(WeatherDisplayInterface $entity) {
+  // Remove related Display Places.
+  $displayPlaces = Drupal::entityTypeManager()->getStorage('weather_display_place')->loadByProperties([
+    'display_type' => $entity->type->value,
+    'display_number' => $entity->number->value,
+  ]);
+  foreach ($displayPlaces as $displayPlace) {
+    $displayPlace->delete();
+  }
+
+  // Remove related block instances.
+  $blocks = Drupal::entityTypeManager()->getStorage('block')->loadByProperties([
+    'plugin' => 'weather_system_display_block:' . $entity->id(),
+  ]);
+  foreach ($blocks as $block) {
+    $block->delete();
+  }
+}

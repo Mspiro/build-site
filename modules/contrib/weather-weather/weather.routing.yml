@@ -1,0 +1,159 @@
+weather.settings:
+  path: '/admin/config/user-interface/weather'
+  defaults:
+    _title: 'Weather'
+    _form: 'Drupal\weather\Form\SettingsForm'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+weather.settings.places:
+  path: '/admin/config/user-interface/weather/places'
+  defaults:
+    _title: 'Places'
+    _form: 'Drupal\weather\Form\AddCustomPlaceForm'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+weather.detailed_forecast:
+  path: '/weather/{country}/{place}/{city}/{destination}'
+  defaults:
+    _title: 'Weather forecast'
+    _controller: '\Drupal\weather\Controller\WeatherDetailedForecastController::detailedForecast'
+  requirements:
+    _permission: 'access content'
+
+# -----------------------------------#
+# Weather display routes
+# -----------------------------------#
+entity.weather_display.add:
+  path: '/admin/config/user-interface/weather/system-wide/add'
+  defaults:
+    _entity_form: weather_display.add
+    _title: 'Add Weather display'
+    display_type: 'system-wide'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+entity.weather_display.default:
+  path: '/admin/config/user-interface/weather/system-wide/default'
+  defaults:
+    _entity_form: weather_display.add
+    _title: 'Edit default display'
+    display_type: 'default'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+entity.weather_display.edit_form:
+  path: '/admin/config/user-interface/weather/system-wide/{display_number}/edit'
+  defaults:
+    _entity_form: weather_display.edit
+    _title: 'Edit Weather display'
+    display_type: 'system-wide'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+entity.weather_display.delete_form:
+  path: '/admin/config/user-interface/weather/system-wide/{display_number}/delete'
+  defaults:
+    _entity_form: weather_display.delete
+    _title: 'Delete Weather display'
+    display_type: 'system-wide'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+# -----------------------------------#
+# Weather display place routes
+# -----------------------------------#
+entity.weather_display_place.add_form:
+  path: '/admin/config/user-interface/weather/{display_type}/{display_number}/add'
+  defaults:
+    _entity_form: weather_display_place.add
+    _title: 'Add a place to the display'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+entity.weather_display_place.edit_form:
+  path: '/admin/config/user-interface/weather/weather-display-place/{weather_display_place}/edit'
+  defaults:
+    _entity_form: weather_display_place.edit
+    _title: 'Edit Weather display place'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+entity.weather_display_place.delete_form:
+  path: '/admin/config/user-interface/weather/weather-display-place/{weather_display_place}/delete'
+  defaults:
+    _entity_form: weather_display_place.delete
+    _title: 'Delete Weather display place'
+  requirements:
+    _permission: 'administer system-wide weather'
+
+# -----------------------------------#
+# User configured weather display.
+# -----------------------------------#
+weather.user.settings:
+  path: 'user/{user}/weather'
+  defaults:
+    _title: Weather
+    _controller: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::content'
+  requirements:
+    _custom_access: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::access'
+
+# -----------------------------------#
+# Manage places in user display.
+# -----------------------------------#
+weather.user.weather_display_place.add_form:
+  path: '/user/{user}/weather/add'
+  defaults:
+    _entity_form: weather_display_place.add
+    _title: 'Add a place to user display'
+    display_type: 'user'
+  requirements:
+    _entity_create_access: 'weather_display_place'
+    _custom_access: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+weather.user.weather_display_place.edit_form:
+  path: '/user/{user}/weather/{weather_display_place}'
+  defaults:
+    _entity_form: weather_display_place.edit
+    _title: 'Edit Weather display place'
+    display_type: 'user'
+  requirements:
+    _entity_access: 'weather_display_place.update'
+    _custom_access: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+weather.user.weather_display_place.delete_form:
+  path: '/user/{user}/weather/{weather_display_place}/delete'
+  defaults:
+    _entity_form: weather_display_place.delete
+    _title: 'Delete Weather display place'
+    display_type: 'user'
+  requirements:
+    _entity_access: 'weather_display_place.delete'
+    _custom_access: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+weather.user.weather_display.add_form:
+  path: '/user/{user}/weather/display'
+  defaults:
+    _entity_form: weather_display.add
+    _title: 'Edit user Weather display'
+    display_type: 'user'
+  requirements:
+    _entity_create_access: 'weather_display'
+    _custom_access: '\Drupal\weather\Controller\WeatherUserConfiguredDisplayController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user

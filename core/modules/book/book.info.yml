@@ -1,0 +1,13 @@
+name: Book
+type: module
+description: 'Allows users to create and organize related content in an outline.'
+package: Core
+# version: VERSION
+dependencies:
+  - drupal:node
+configure: book.settings
+
+# Information added by Drupal.org packaging script on 2021-11-17
+version: '9.2.9'
+project: 'drupal'
+datestamp: 1637185016

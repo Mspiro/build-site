@@ -1,0 +1,16 @@
+# Schema for the configuration files of the Weather module.
+weather.settings:
+  type: config_object
+  mapping:
+    weather_image_directory:
+      type: string
+      label: 'Directory of custom images'
+      translatable: false
+    weather_forecast_days:
+      type: integer
+      label: 'Number of forecast days'
+      translatable: false
+    weather_time_for_testing:
+      type: integer
+      label: 'Timestamp to use for testing the module'
+      translatable: false

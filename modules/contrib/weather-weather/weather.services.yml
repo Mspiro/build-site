@@ -1,0 +1,16 @@
+services:
+  weather.data_service:
+    class: Drupal\weather\Service\DataService
+    arguments: ['@entity_type.manager']
+
+  weather.helper:
+    class: Drupal\weather\Service\HelperService
+    arguments: ['@entity_type.manager']
+
+  weather.theme:
+    class: Drupal\weather\Service\ThemeService
+    arguments: ['@entity_type.manager', '@weather.helper',  '@weather.parser', '@weather.data_service', '@config.factory', '@theme.manager', '@date.formatter']
+
+  weather.parser:
+    class: Drupal\weather\Service\ParserService
+    arguments: ['@entity_type.manager', '@weather.helper', '@http_client', '@logger.factory', '@current_user', '@messenger']

@@ -1,0 +1,12 @@
+name: 'Taxonomy CRUD tests'
+type: module
+description: 'Provides 3rd party settings for vocabulary.'
+package: Testing
+# version: VERSION
+dependencies:
+  - drupal:taxonomy
+
+# Information added by Drupal.org packaging script on 2021-11-17
+version: '9.2.9'
+project: 'drupal'
+datestamp: 1637185016

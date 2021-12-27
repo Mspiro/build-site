@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - weather
+  enforced:
+    module:
+      - weather
+id: weather_short
+label: 'Weather short date'
+locked: false
+pattern: 'F j, Y'

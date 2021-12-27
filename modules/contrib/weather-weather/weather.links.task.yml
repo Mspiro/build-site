@@ -1,0 +1,15 @@
+weather.settings:
+  route_name: weather.settings
+  title: Displays
+  base_route: weather.settings
+
+weather.settings.places:
+  route_name: weather.settings.places
+  title: Places
+  base_route: weather.settings
+  weight: 2
+
+weather.user.settings:
+  route_name: weather.user.settings
+  title: Weather
+  base_route: entity.user.canonical

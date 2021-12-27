@@ -1,0 +1,61 @@
+
+<div class="weather">
+  {% for place in weather %}
+    <p style="clear:left"><strong>{{ place.name }}</strong></p>
+    {% if place.forecasts is empty%}
+      {{'Currently, there is no weather information available.'|t }}
+    {% endif %}
+    {% for forecast in place.forecasts %}
+      <p>
+        {{ forecast.formatted_date }}
+        {% if forecast.sun_info %}
+          <br />
+          {% if forecast.sun_info is iterable %}
+            {{'Sunrise: @time'|t({'@time': forecast.sun_info.sunrise}) }}<br />
+            {{'Sunset: @time'|t({'@time': forecast.sun_info.sunset}) }}
+          {% else %}
+            {{forecast.sun_info }}
+          {% endif %}
+        {% endif %}
+      </p>
+      <table>
+        <thead>
+        <th>{{ 'Time'|t }}</th>
+        <th>{{ 'Forecast'|t }}</th>
+        <th>{{ 'Temperature'|t }}</th>
+        <th>{{ 'Precipitation'|t }}</th>
+        <th>{{ 'Pressure'|t }}</th>
+        <th>{{ 'Wind'|t }}</th>
+        </thead>
+        {% for time_range, data in forecast.time_ranges %}
+          <tr>
+            <td>{{ time_range }}</td>
+            <td>
+              {{ data.symbol }}
+              {{ data.condition }}
+            </td>
+            <td>
+              {{ data.temperature }}
+              {% if data.windchill %}
+                <br />
+                {{'Feels like !temperature'|t({'!temperature': data.windchill}) }}
+              {% endif %}
+            </td>
+            <td>{{ data.precipitation }}</td>
+            <td>{{ data.pressure }}</td>
+            <td>{{ data.wind }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endfor %}
+    {% if place.station %}
+      <p style="clear:left">
+        {{ 'Location of this weather station:'|t }}<br />
+        {{ place.station }}
+      </p>
+    {% endif %}
+    <p style="clear:left">
+      {{ '<a href="@url">Weather forecast from yr.no</a>, delivered by the Norwegian Meteorological Institute and the NRK'|t({'@url': place["yr.no"]}) }}
+    </p>
+  {% endfor %}
+</div>
