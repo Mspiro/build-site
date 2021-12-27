@@ -1,0 +1,19 @@
+uuid: af2a0fb6-9b42-482c-a093-f3c3bdf42327
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_emai
+    - node.type.demo
+id: node.demo.field_emai
+field_name: field_emai
+entity_type: node
+bundle: demo
+label: 'Email here'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

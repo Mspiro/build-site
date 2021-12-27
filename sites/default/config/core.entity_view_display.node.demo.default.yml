@@ -1,0 +1,36 @@
+uuid: 20cc82e7-f4ca-4c41-a655-441b38d6fbdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.demo.body
+    - field.field.node.demo.field_emai
+    - node.type.demo
+  module:
+    - text
+    - user
+id: node.demo.default
+targetEntityType: node
+bundle: demo
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_emai:
+    weight: 102
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden: {  }

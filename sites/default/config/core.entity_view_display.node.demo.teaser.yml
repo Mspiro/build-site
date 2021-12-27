@@ -1,0 +1,32 @@
+uuid: 05b3726f-5513-4682-853a-4f93504ebf20
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.demo.body
+    - field.field.node.demo.field_emai
+    - node.type.demo
+  module:
+    - text
+    - user
+id: node.demo.teaser
+targetEntityType: node
+bundle: demo
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_emai: true
