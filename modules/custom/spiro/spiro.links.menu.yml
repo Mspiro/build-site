@@ -1,0 +1,6 @@
+spiro.newpage:
+  title: 'Spiro Stuff'
+  description: 'Link to the page spiro created'
+  route_name: spiro.content
+  weight: 10
+  menu_name: main

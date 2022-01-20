@@ -1,0 +1,7 @@
+spiro.content:
+  path: '/spiro'
+  defaults:
+    _controller: '\Drupal\spiro\Controller\FirstController::content'
+    _title: 'My First Page and Menu Item'
+  requirements:
+    _permission: 'access content'

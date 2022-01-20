@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/admin_toolbar": "^3.0",
         "drupal/blazy": "^2.5",
         "drupal/core-composer-scaffold": "^9.2",
         "drupal/core-project-message": "^9.2",
